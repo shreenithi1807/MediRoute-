@@ -1,0 +1,31 @@
+{
+  "manifest_version": "0.4",
+  "name": "mediroute",
+  "display_name": "MediRoute",
+  "version": "1.0.0",
+  "description": "Educational AI-powered emergency ambulance dispatcher using MCP.",
+  "author": {
+    "name": "MediRoute Team"
+  },
+  "server": {
+    "type": "uv",
+    "entry_point": "mcp_server/server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "mcp_server/server.py"
+      ]
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "win32"
+    ],
+    "runtimes": {
+      "python": ">=3.10,<4.0"
+    }
+  }
+}

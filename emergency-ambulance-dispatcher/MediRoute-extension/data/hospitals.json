@@ -1,0 +1,6 @@
+[
+{"id":"H01","name":"City General","location":"Town Hall","beds":2,"icu":false,"trauma":true},
+{"id":"H02","name":"Metro Medical","location":"Peelamedu","beds":8,"icu":true,"trauma":true},
+{"id":"H03","name":"North Care","location":"RS Puram","beds":5,"icu":true,"trauma":false},
+{"id":"H04","name":"West Emergency","location":"Saibaba Colony","beds":0,"icu":true,"trauma":true}
+]

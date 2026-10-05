@@ -1,0 +1,10 @@
+[
+{"from":"Gandhipuram","to":"RS Puram","distance":3,"traffic":1.0,"status":"open"},
+{"from":"Gandhipuram","to":"Peelamedu","distance":5,"traffic":1.4,"status":"open"},
+{"from":"Gandhipuram","to":"Saibaba Colony","distance":4,"traffic":1.1,"status":"open"},
+{"from":"RS Puram","to":"Town Hall","distance":4,"traffic":1.2,"status":"open"},
+{"from":"RS Puram","to":"Saibaba Colony","distance":3,"traffic":1.0,"status":"open"},
+{"from":"Peelamedu","to":"Town Hall","distance":7,"traffic":1.5,"status":"open"},
+{"from":"Peelamedu","to":"Saibaba Colony","distance":6,"traffic":1.1,"status":"open"},
+{"from":"Saibaba Colony","to":"Town Hall","distance":5,"traffic":1.0,"status":"open"}
+]

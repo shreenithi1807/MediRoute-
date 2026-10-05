@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MediRoute Hospital Console</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css?v=40"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef7fb 0%,
+                    #f7fbfd 50%,
+                    #edf5f9 100%
+                );
+            color: #1e293b;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .hospital-app {
+            max-width: 1280px;
+            margin: auto;
+            padding: 28px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .hospital-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f3554,
+                    #145a7a
+                );
+
+            color: white;
+
+            border-radius: 20px;
+            padding: 26px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow:
+                0 10px 30px
+                rgba(15, 53, 84, 0.18);
+
+            margin-bottom: 24px;
+        }
+
+        .hospital-header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hospital-header p {
+            margin: 8px 0 0;
+            color: #d8edf7;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           LIVE STATUS
+        ========================= */
+
+        .online {
+            background: rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,0.25);
+
+            padding: 10px 16px;
+            border-radius: 30px;
+
+            color: #80edb3;
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           HOSPITAL SELECTOR
+        ========================= */
+
+        .hospital-selector {
+            background: #ffffff;
+
+            padding: 22px 24px;
+
+            border-radius: 16px;
+
+            margin-bottom: 24px;
+
+            border: 1px solid #dce9f0;
+
+            box-shadow:
+                0 5px 18px
+                rgba(31, 65, 86, 0.06);
+        }
+
+        .hospital-selector strong {
+            color: #123b5d;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hospital-selector select {
+            width: 100%;
+
+            margin-top: 12px;
+            padding: 14px 15px;
+
+            border-radius: 10px;
+            border: 1px solid #cbdde7;
+
+            background: #f8fbfd;
+
+            color: #1e293b;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        .hospital-selector select:focus {
+            border-color: #1677a6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(22,119,166,0.12);
+
+            background: white;
+        }
+
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .hospital-grid {
+            display: grid;
+
+            grid-template-columns:
+                0.8fr 1.5fr;
+
+            gap: 22px;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .hospital-card {
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            border: 1px solid #dce9f0;
+
+            box-shadow:
+                0 5px 20px
+                rgba(31,65,86,0.06);
+        }
+
+        .hospital-card h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+
+            color: #123b5d;
+
+            font-size: 19px;
+        }
+
+        #hospitalName {
+            margin-top: 25px;
+            margin-bottom: 8px;
+
+            color: #1677a6;
+
+            font-size: 24px;
+        }
+
+        #hospitalLocation {
+            color: #64748b;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CAPACITY
+        ========================= */
+
+        .capacity-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .capacity-box {
+            background: #f3f8fb;
+
+            border: 1px solid #d9e8ef;
+
+            padding: 17px;
+
+            border-radius: 13px;
+
+            transition: 0.2s;
+        }
+
+        .capacity-box:hover {
+            border-color: #8dc7df;
+
+            box-shadow:
+                0 4px 12px
+                rgba(22,119,166,0.08);
+        }
+
+        .capacity-box label {
+            display: block;
+
+            color: #526574;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            margin-bottom: 10px;
+        }
+
+        .capacity-box input {
+            width: 100%;
+
+            padding: 11px;
+
+            font-size: 22px;
+            font-weight: 700;
+
+            color: #123b5d;
+
+            background: white;
+
+            border-radius: 9px;
+            border: 1px solid #cbdde7;
+
+            outline: none;
+        }
+
+        .capacity-box input:focus {
+            border-color: #1677a6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(22,119,166,0.1);
+        }
+
+
+        /* =========================
+           UPDATE BUTTON
+        ========================= */
+
+        .update-button {
+            margin-top: 20px;
+
+            padding: 13px 24px;
+
+            border: none;
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1677a6,
+                    #12648e
+                );
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            box-shadow:
+                0 5px 12px
+                rgba(22,119,166,0.2);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .update-button:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 7px 16px
+                rgba(22,119,166,0.28);
+        }
+
+        .update-button:active {
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           INCOMING EMERGENCIES
+        ========================= */
+
+        .incoming-section {
+            margin-top: 24px;
+        }
+
+        .incoming-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        /* =========================
+           EMERGENCY CARD
+        ========================= */
+
+        .emergency-card {
+            border-left: 5px solid #d64545;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #fff5f5,
+                    #ffffff
+                );
+
+            border-radius: 12px;
+
+            padding: 19px;
+
+            margin-top: 14px;
+
+            border-top: 1px solid #f4dcdc;
+            border-right: 1px solid #f4dcdc;
+            border-bottom: 1px solid #f4dcdc;
+
+            box-shadow:
+                0 3px 10px
+                rgba(214,69,69,0.05);
+        }
+
+        .emergency-top {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .critical {
+            color: #c93636;
+
+            background: #ffe9e9;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           CASE DETAILS
+        ========================= */
+
+        .case-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+
+            margin-top: 17px;
+        }
+
+        .case-grid > div {
+            background: #f8fbfd;
+
+            border: 1px solid #e1ebf0;
+
+            padding: 12px;
+
+            border-radius: 9px;
+        }
+
+        .case-label {
+            color: #718096;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.4px;
+        }
+
+        .case-value {
+            color: #1e3a4f;
+
+            font-weight: 700;
+
+            margin-top: 6px;
+        }
+
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty {
+            text-align: center;
+
+            padding: 42px 20px;
+
+            color: #718096;
+
+            background: #f8fbfd;
+
+            border: 1px dashed #cbdde7;
+
+            border-radius: 12px;
+
+            margin-top: 15px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 850px) {
+
+            .hospital-app {
+                padding: 15px;
+            }
+
+            .hospital-header {
+                padding: 22px;
+
+                flex-direction: column;
+                align-items: flex-start;
+
+                gap: 18px;
+            }
+
+            .hospital-header h1 {
+                font-size: 23px;
+            }
+
+            .hospital-grid,
+            .capacity-grid,
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .online {
+                align-self: flex-start;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="hospital-app">
+
+
+    <!-- HEADER -->
+
+    <div class="hospital-header">
+
+        <div>
+
+            <h1>
+                🏥 MediRoute Hospital Console
+            </h1>
+
+            <p>
+                Emergency Reception & Capacity Management
+            </p>
+
+        </div>
+
+        <div class="online">
+            ● LIVE
+        </div>
+
+    </div>
+
+
+    <!-- HOSPITAL SELECTOR -->
+
+    <div class="hospital-selector">
+
+        <strong>
+            Select Hospital
+        </strong>
+
+        <select
+            id="hospitalSelect"
+            onchange="selectHospital()"
+        >
+
+            <option value="">
+                Select hospital...
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- HOSPITAL CONTENT -->
+
+    <div
+        id="hospitalContent"
+        style="display:none;"
+    >
+
+
+        <div class="hospital-grid">
+
+
+            <!-- STATUS -->
+
+            <div class="hospital-card">
+
+                <h2>
+                    Hospital Status
+                </h2>
+
+                <h3 id="hospitalName">
+                    -
+                </h3>
+
+                <p id="hospitalLocation">
+                    -
+                </p>
+
+            </div>
+
+
+            <!-- CAPACITY -->
+
+            <div class="hospital-card">
+
+                <h2>
+                    Capacity Management
+                </h2>
+
+                <div class="capacity-grid">
+
+
+                    <div class="capacity-box">
+
+                        <label>
+                            🛏 Available Beds
+                        </label>
+
+                        <input
+                            id="bedsInput"
+                            type="number"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <div class="capacity-box">
+
+                        <label>
+                            ICU Beds
+                        </label>
+
+                        <input
+                            id="icuInput"
+                            type="number"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <div class="capacity-box">
+
+                        <label>
+                            Trauma Care
+                        </label>
+
+                        <input
+                            id="traumaInput"
+                            type="number"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="update-button"
+                    onclick="updateCapacity()"
+                >
+                    Update Capacity
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- INCOMING EMERGENCIES -->
+
+        <div
+            class="hospital-card incoming-section"
+        >
+
+            <h2>
+                🚨 Incoming Emergencies
+            </h2>
+
+            <div id="incomingCases">
+
+                <div class="empty">
+                    No incoming emergencies at the moment.
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script src="/static/hospital.js?v=1"></script>
+
+</body>
+
+</html>

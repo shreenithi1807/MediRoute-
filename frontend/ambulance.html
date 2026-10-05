@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MediRoute Crew</title>
+    <link rel="stylesheet" href="/static/style.css?v=11">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">✚</div>
+            <div>
+                <h1>MediRoute Crew</h1>
+                <p>Emergency Response Console</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span></span>
+            Crew Online
+        </div>
+    </header>
+
+
+    <main class="crew-container">
+
+        <div class="crew-header-card">
+            <div>
+                <span class="small-label">AMBULANCE</span>
+                <h2>🚑 <span id="ambulanceName">A01</span></h2>
+            </div>
+
+            <div id="crewStatusBadge" class="crew-status-badge">
+                Checking...
+            </div>
+        </div>
+
+
+        <div id="assignment" class="assignment-card">
+            <div class="loading-message">
+                Checking for emergency assignment...
+            </div>
+        </div>
+
+
+        <div id="crewActions" class="crew-actions">
+
+            <button
+                id="startButton"
+                class="crew-action primary-action"
+                onclick="setStatus('en_route')"
+            >
+                <span class="action-icon">🚑</span>
+                <span>
+                    <strong>Start Journey</strong>
+                    <small>Begin travelling to patient</small>
+                </span>
+            </button>
+
+
+            <button
+                id="pickupButton"
+                class="crew-action"
+                onclick="setStatus('with_patient')"
+            >
+                <span class="action-icon">👤</span>
+                <span>
+                    <strong>Patient Picked Up</strong>
+                    <small>Patient is inside ambulance</small>
+                </span>
+            </button>
+
+
+            <button
+                id="hospitalButton"
+                class="crew-action"
+                onclick="setStatus('at_hospital')"
+            >
+                <span class="action-icon">🏥</span>
+                <span>
+                    <strong>Reached Hospital</strong>
+                    <small>Confirm hospital arrival</small>
+                </span>
+            </button>
+
+
+            <button
+                id="completeButton"
+                class="crew-action complete-action"
+                onclick="returnDuty()"
+            >
+                <span class="action-icon">✓</span>
+                <span>
+                    <strong>Complete Case</strong>
+                    <small>Return ambulance to duty</small>
+                </span>
+            </button>
+
+        </div>
+
+
+        <p class="crew-refresh">
+            ● Assignment automatically updates every 3 seconds
+        </p>
+
+    </main>
+
+</div>
+
+<script src="/static/ambulance.js?v=40"></script>
+
+</body>
+</html>

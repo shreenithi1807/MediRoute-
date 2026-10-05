@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRoute Control Center</title>
+    <link rel="stylesheet" href="/static/style.css?v=21">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">✚</div>
+            <div>
+                <h1>MediRoute Control Center</h1>
+                <p>Emergency System Administration</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span></span>
+            Database Online
+        </div>
+    </header>
+
+    <main class="admin-container">
+
+        <div class="admin-tabs">
+            <button onclick="showTab('ambulances')">
+                🚑 Ambulances
+            </button>
+
+            <button onclick="showTab('hospitals')">
+                🏥 Hospitals
+            </button>
+
+            <button onclick="showTab('roads')">
+                🛣 Roads
+            </button>
+
+            <button onclick="showTab('emergencies')">
+                🚨 Emergencies
+            </button>
+        </div>
+
+        <section id="adminContent" class="admin-content">
+            Loading database...
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+    window.onerror = function(message, source, line, column, error) {
+        document.getElementById("adminContent").innerHTML = `
+            <h2 style="color:#ff5c68;">Admin JavaScript Error</h2>
+            <p><strong>Message:</strong> ${message}</p>
+            <p><strong>Line:</strong> ${line}</p>
+            <p><strong>Column:</strong> ${column}</p>
+        `;
+    };
+</script>
+
+<script src="/static/admin.js?v=22"></script>
+</body>
+</html>

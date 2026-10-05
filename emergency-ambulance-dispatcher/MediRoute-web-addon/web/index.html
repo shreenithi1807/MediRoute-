@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MediRoute — AI Emergency Dispatcher</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <div class="brand">🚑 MediRoute</div>
+      <div class="subtitle">AI-powered emergency ambulance dispatcher — educational simulator</div>
+    </div>
+    <span id="status" class="status">Checking...</span>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Describe the situation</h2>
+      <textarea id="message" placeholder="Example: A cardiac emergency has occurred at Gandhipuram. Severity 5. ICU required."></textarea>
+
+      <div class="upload">
+        <label for="document">Upload emergency document (PDF or UTF-8 text)</label>
+        <input id="document" type="file" accept=".pdf,.txt">
+      </div>
+
+      <button id="analyze">Analyze with Claude</button>
+      <p class="hint">Simulation only. This application does not contact real emergency services.</p>
+    </section>
+
+    <section class="card result-card">
+      <div class="result-head">
+        <h2>Claude analysis</h2>
+        <span id="model"></span>
+      </div>
+      <div id="loading" hidden>Claude is analyzing the situation and using MediRoute tools…</div>
+      <pre id="answer">Your analysis will appear here.</pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

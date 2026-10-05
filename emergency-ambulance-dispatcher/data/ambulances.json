@@ -1,0 +1,6 @@
+[
+{"id":"A01","name":"Ambulance A01","location":"Gandhipuram","status":"available","type":"Advanced","icu":true},
+{"id":"A02","name":"Ambulance A02","location":"RS Puram","status":"busy","type":"Basic","icu":false},
+{"id":"A03","name":"Ambulance A03","location":"Peelamedu","status":"available","type":"Advanced","icu":true},
+{"id":"A04","name":"Ambulance A04","location":"Saibaba Colony","status":"available","type":"Basic","icu":false}
+]

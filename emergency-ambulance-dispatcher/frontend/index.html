@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MediRoute AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css?v=32"
+    >
+    <!-- Leaflet Map JavaScript -->
+     <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      ></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="logo">✚</div>
+
+            <div>
+                <h1>MediRoute AI</h1>
+
+                <p>
+                    Intelligent Emergency Dispatch System
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="status">
+            <span></span>
+            System Online
+        </div>
+
+    </header>
+
+
+    <main class="chat-container">
+
+        <div
+            id="chatMessages"
+            class="chat-messages"
+        >
+
+            <div class="ai-message message">
+
+                <div class="avatar">
+                    AI
+                </div>
+
+                <div class="bubble">
+
+                    <strong>
+                        MediRoute AI
+                    </strong>
+
+                    <p>
+                        Emergency dispatch system ready.
+                        Describe the emergency and location.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="emergency-location-panel">
+
+            <div class="location-icon">
+                📍
+            </div>
+
+            <div class="location-information">
+
+                <strong>
+                    Share your live location
+                </strong>
+
+                <p>
+                    Send your GPS location directly
+                    to the assigned ambulance crew.
+                </p>
+
+                <span
+                    id="locationStatus"
+                    class="location-status"
+                >
+                    ● Location not shared
+                </span>
+
+            </div>
+
+
+            <button
+                id="locationButton"
+                type="button"
+                class="share-location-button"
+                onclick="shareLocation()"
+            >
+                📍 Share Location
+            </button>
+            <button
+               id="cancelEmergencyButton"
+               type="button"
+               class="share-location-button"
+             onclick="cancelEmergency()"
+>
+             ✕ Cancel Emergency
+            </button>
+        </div>
+
+
+        <div class="suggestions">
+
+            <button
+                onclick="quickPrompt(
+                    'Critical accident at Gandhipuram. Severity 5. Needs Trauma. Dispatch an ambulance.'
+                )"
+            >
+                🚑 Critical Accident
+            </button>
+
+
+            <button
+                onclick="quickPrompt(
+                    'Cardiac emergency at RS Puram. Severity 5. Needs ICU. Dispatch an ambulance.'
+                )"
+            >
+                ❤️ Cardiac Emergency
+            </button>
+
+
+            <button
+                onclick="quickPrompt(
+                    'Injury at Peelamedu. Severity 3. Dispatch an ambulance.'
+                )"
+            >
+                🏥 Injury
+            </button>
+
+        </div>
+
+
+        <div class="input-wrapper">
+
+            <input
+                id="chatInput"
+                type="text"
+                placeholder="Describe the emergency and location..."
+                autocomplete="off"
+            >
+
+            <button
+                class="send-button"
+                onclick="sendChat()"
+                type="button"
+            >
+                Send
+            </button>
+
+        </div>
+
+
+        <p class="footer-text">
+            AI + Priority Queue + Min Heap +
+            A* Route Optimization
+        </p>
+
+    </main>
+
+</div>
+
+
+<script src="/static/app.js?v=33"></script>
+
+</body>
+</html>
